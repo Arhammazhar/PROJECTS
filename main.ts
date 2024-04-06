@@ -2,6 +2,10 @@
 
 import inquirer from "inquirer";
 
+let condition:boolean = true;
+
+while(condition){
+
 const answer = await inquirer.prompt([
   { message: "Enter first number", type: "number", name: "FirstNumber" },
   { message: "Enter Second number", type: "number", name: "SecondNumber" },
@@ -23,4 +27,12 @@ if (answer.operator === "Addition") {
   console.log(answer.FirstNumber / answer.SecondNumber);
 } else {
   console.log("Please select a valid Operator.");
+}
+let ConfirmationMessage = await inquirer.prompt([{
+  name: "confirmation",
+  type: "confirm",
+  message: "Do you want to do more calculation?",
+  default: "true",
+}])
+condition = ConfirmationMessage.confirmation;
 }
